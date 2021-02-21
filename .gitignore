@@ -21,7 +21,6 @@
 
 README.md-orig
 package-lock.json
-public/manifest.json
 
 npm-debug.log*
 yarn-debug.log*
