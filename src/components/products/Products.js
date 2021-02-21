@@ -1,9 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import formatCurrency from '../../utilities/utils';
 import './Products.css';
 
-export default class Products extends Component {
-  render() {
+class Products extends Component {
+
+  render(props) {
+    console.log(this.props.products)
     return (
+      
       <div>
         <ul className="products">
           {this.props.products.map((product) => (
@@ -14,7 +18,7 @@ export default class Products extends Component {
                   <p>{product.title}</p>
                 </a>
                 <div className="product-price">
-                  <div>{product.price}</div>
+                  <div>{formatCurrency(product.price)}</div>
                   <button className="button primary">
                     Add To Cart
                   </button>
@@ -27,3 +31,4 @@ export default class Products extends Component {
     )
   }
 }
+export default Products;
