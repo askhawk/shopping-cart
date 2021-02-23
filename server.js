@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const shortid = require("shortid");
 
 const app = express();
+const port = process.env.PORT || 5000;
 app.use(bodyParser.json());
 
 try {
@@ -48,8 +49,6 @@ app.delete("/api/products/:id", async (req, res) => {
 	res.send(deletedProduct);
 });
 
-app.listen(process.env.PORT, () =>
-	console.log(
-		`serve at http://localhost:${process.env.PORT}`.yellow.underline.bold
-	)
+app.listen(port, () =>
+	console.log(`serve at http://localhost:${port}`.yellow.underline.bold)
 );

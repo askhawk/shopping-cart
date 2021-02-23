@@ -1,4 +1,6 @@
 import React from "react";
+import { Provider } from "react-redux";
+import store from "../redux/store/store";
 import data from "../data.json";
 import Products from "../components/products/Products";
 import Filter from "../components/filter/Filter";
@@ -94,36 +96,38 @@ class App extends React.Component {
 	///
 	render() {
 		return (
-			<div className="grid-container">
-				<header className="App-header">
-					<a href="/">React Shopping Cart</a>
-				</header>
-				<main>
-					<div className="content">
-						<div className="main">
-							<Filter
-								count={this.state.products.length}
-								size={this.state.products.size}
-								sort={this.state.products.sort}
-								filterProducts={this.filterProducts}
-								sortProducts={this.sortProducts}
-							/>
-							<Products
-								products={this.state.products}
-								addToCart={this.addToCart}
-							></Products>
+			<Provider store={store}>
+				<div className="grid-container">
+					<header className="App-header">
+						<a href="/">React Shopping Cart</a>
+					</header>
+					<main>
+						<div className="content">
+							<div className="main">
+								<Filter
+									count={this.state.products.length}
+									size={this.state.products.size}
+									sort={this.state.products.sort}
+									filterProducts={this.filterProducts}
+									sortProducts={this.sortProducts}
+								/>
+								<Products
+									products={this.state.products}
+									addToCart={this.addToCart}
+								></Products>
+							</div>
+							<div className="sidebar">
+								<Cart
+									cartItems={this.state.cartItems}
+									removeFromCart={this.removeFromCart}
+									createOrder={this.createOrder}
+								/>
+							</div>
 						</div>
-						<div className="sidebar">
-							<Cart
-								cartItems={this.state.cartItems}
-								removeFromCart={this.removeFromCart}
-								createOrder={this.createOrder}
-							/>
-						</div>
-					</div>
-				</main>
-				<footer>Copyright © 2021 Coding With Asknet.</footer>
-			</div>
+					</main>
+					<footer>Copyright © 2021 Coding With Asknet.</footer>
+				</div>
+			</Provider>
 		);
 	}
 }
