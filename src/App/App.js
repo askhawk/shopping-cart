@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 import store from "../redux/store/store";
-import data from "../data.json";
+// import data from "../data.json";
 import Products from "../components/products/Products";
 import Filter from "../components/filter/Filter";
 import Cart from "../components/cart/Cart";
@@ -11,12 +11,12 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			products: data.products,
+			//products: data.products,
 			cartItems: localStorage.getItem("cartItems")
 				? JSON.parse(localStorage.getItem("cartItems"))
 				: [],
-			sort: "",
-			size: "",
+			/* sort: "",
+			size: "", */
 		};
 	}
 	///
@@ -50,8 +50,8 @@ class App extends React.Component {
 		this.setState({ cartItems });
 		localStorage.setItem("cartItems", JSON.stringify(cartItems));
 	};
-	///
-	sortProducts = (event) => {
+	/// Before implementing Redux functionality
+	/* 	sortProducts = (event) => {
 		const sort = event.target.value;
 		console.log(sort);
 		console.log(this.setState);
@@ -78,9 +78,9 @@ class App extends React.Component {
 						: -1
 				),
 		}));
-	};
-	///
-	filterProducts = (event) => {
+	}; */
+	/// Before implementing Redux functionality
+	/* 	filterProducts = (event) => {
 		console.log(event.target.value);
 		if (event.target.value === "") {
 			this.setState({ size: event.target.value, products: data.products });
@@ -92,7 +92,7 @@ class App extends React.Component {
 				),
 			});
 		}
-	};
+	}; */
 	///
 	render() {
 		return (
@@ -105,14 +105,14 @@ class App extends React.Component {
 						<div className="content">
 							<div className="main">
 								<Filter
-									count={this.state.products.length}
+								/* count={this.state.products.length}
 									size={this.state.products.size}
 									sort={this.state.products.sort}
 									filterProducts={this.filterProducts}
-									sortProducts={this.sortProducts}
+									sortProducts={this.sortProducts} */
 								/>
 								<Products
-									products={this.state.products}
+									/* products={this.state.products} */
 									addToCart={this.addToCart}
 								></Products>
 							</div>
@@ -131,21 +131,5 @@ class App extends React.Component {
 		);
 	}
 }
-
-/* function App() {
-  return (
-    <div className='grid-container'>
-      <header className='App-header'>
-        <a href="/">React Shopping Cart</a>
-      </header>
-      <main>
-        Product List
-      </main>
-      <footer>
-        Copyright © 2021 Coding With Asknet.
-      </footer>
-    </div>
-  );
-} */
 
 export default App;
