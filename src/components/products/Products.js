@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProducts } from "../../redux/actions/productActions";
+import { addToCart } from "../../redux/actions/cartActions";
 import Fade from "react-reveal/Fade";
 import Zoom from "react-reveal/Zoom";
 import Modal from "react-modal";
@@ -108,5 +109,6 @@ export default connect(
 	(state) => ({ products: state.products.filteredItems }),
 	{
 		fetchProducts,
+		addToCart,
 	}
 )(Products);

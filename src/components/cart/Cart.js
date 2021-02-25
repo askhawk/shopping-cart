@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { removeFromCart } from "../../redux/actions/cartActions";
 import Fade from "react-reveal/Fade";
 import formatCurrency from "../../utilities/utils";
 import "./Cart.css";
@@ -137,4 +139,9 @@ class Cart extends Component {
 	}
 }
 
-export default Cart;
+export default connect(
+	(state) => ({
+		cartItems: state.cart.cartItems,
+	}),
+	{ removeFromCart }
+)(Cart);
